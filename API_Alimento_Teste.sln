@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31605.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API_Alimento_Teste", "API_Alimento_Teste\API_Alimento_Teste.csproj", "{7C1EFA25-A7A8-4289-B76C-271E026A80C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API_Alimento_Teste", "API_Alimento_Teste\API_Alimento_Teste.csproj", "{7C1EFA25-A7A8-4289-B76C-271E026A80C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API_Alimento_Teste.Lib", "API_Alimento_Teste.Lib\API_Alimento_Teste.Lib.csproj", "{768CB427-3BBA-4E83-9B1C-4AE757D80437}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API_Alimento_Teste.DA", "API_Alimento_Teste.DA\API_Alimento_Teste.DA.csproj", "{446DB0E8-63EF-4091-8240-EF0D4BEBD265}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{7C1EFA25-A7A8-4289-B76C-271E026A80C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C1EFA25-A7A8-4289-B76C-271E026A80C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C1EFA25-A7A8-4289-B76C-271E026A80C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{768CB427-3BBA-4E83-9B1C-4AE757D80437}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{768CB427-3BBA-4E83-9B1C-4AE757D80437}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{768CB427-3BBA-4E83-9B1C-4AE757D80437}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{768CB427-3BBA-4E83-9B1C-4AE757D80437}.Release|Any CPU.Build.0 = Release|Any CPU
+		{446DB0E8-63EF-4091-8240-EF0D4BEBD265}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{446DB0E8-63EF-4091-8240-EF0D4BEBD265}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{446DB0E8-63EF-4091-8240-EF0D4BEBD265}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{446DB0E8-63EF-4091-8240-EF0D4BEBD265}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
