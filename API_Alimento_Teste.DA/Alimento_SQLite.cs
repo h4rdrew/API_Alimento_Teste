@@ -21,7 +21,7 @@ namespace API_Alimento_Teste.DA
         }
         public int Atualiza_Alimento(Model_Alimento alimento)
         {
-            throw new NotImplementedException();
+            return (int)DB.InsertOrReplace(alimento);
         }
 
         public int Cadastro_Alimento(Model_Alimento alimento)
@@ -36,12 +36,12 @@ namespace API_Alimento_Teste.DA
 
         public IEnumerable<Model_Alimento> ConsultaAlimento_Nome(string nome)
         {
-            throw new NotImplementedException();
+            return DB.GetAllWhere<Model_Alimento>("Nome", nome);
         }
 
         public IEnumerable<Model_Alimento> ListarAlimentos()
         {
-            throw new NotImplementedException();
+            return DB.GetAll<Model_Alimento>();
         }
     }
 }

@@ -34,5 +34,28 @@ namespace API_Alimento_Teste.Controllers
             return Ok(resultado);
         }
 
+        [HttpPost]
+        [Route("atualiza_alimento")]
+        public IActionResult AtualizaAlimento([FromForm] Model_Alimento alimento)
+        {
+            var resultado = _db.Alimentos.Atualiza_Alimento(alimento);
+            return Ok(resultado);
+        }
+
+        [HttpPost]
+        [Route("busca_alimento_nome")]
+        public IActionResult ConsultaAlimento_Nome(string nome)
+        {
+            var resultado = _db.Alimentos.ConsultaAlimento_Nome(nome);
+            return Ok(resultado);
+        }
+
+        [HttpPost]
+        [Route("lista_todos_alimentos")]
+        public IActionResult ListarTodosAlimentos()
+        {
+            var resultado = _db.Alimentos.ListarAlimentos();
+            return Ok(resultado);
+        }
     }
 }
