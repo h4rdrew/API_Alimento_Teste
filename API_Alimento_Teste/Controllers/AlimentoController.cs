@@ -42,7 +42,7 @@ namespace API_Alimento_Teste.Controllers
             return Ok(resultado);
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("busca_alimento_nome")]
         public IActionResult ConsultaAlimento_Nome(string nome)
         {
@@ -50,7 +50,7 @@ namespace API_Alimento_Teste.Controllers
             return Ok(resultado);
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("lista_todos_alimentos")]
         public IActionResult ListarTodosAlimentos()
         {
