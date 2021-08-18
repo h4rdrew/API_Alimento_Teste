@@ -26,12 +26,12 @@ namespace API_Alimento_Teste.DA
 
         public int Cadastro_Alimento(Model_Alimento alimento)
         {
-            throw new NotImplementedException();
+            return (int)DB.Insert(alimento);
         }
 
         public Model_Alimento ConsultaAlimento(int id)
         {
-            throw new NotImplementedException();
+            return DB.Get<Model_Alimento>("ID", id);
         }
 
         public IEnumerable<Model_Alimento> ConsultaAlimento_Nome(string nome)

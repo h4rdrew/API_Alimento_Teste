@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using API_Alimento_Teste.Lib.Interfaces;
+﻿using API_Alimento_Teste.Lib.Interfaces;
 using Simple.Sqlite;
+using System.IO;
 
 namespace API_Alimento_Teste.DA
 {
@@ -12,11 +8,13 @@ namespace API_Alimento_Teste.DA
     {
         private readonly string dbPath;
         private SqliteDB db;
-        public Database()
+        public Database(string dbPath)
         {
-            
+            var fileInfo = new FileInfo(dbPath);
+            if (!fileInfo.Directory.Exists) fileInfo.Directory.Create();
+            this.dbPath = dbPath;
         }
-        public IAlimentos Alimentos { get; set; }
+        public IAlimentos Alimentos { get; private set; }
         
         public void Config()
         {

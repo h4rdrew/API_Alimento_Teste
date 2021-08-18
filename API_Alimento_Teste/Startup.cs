@@ -1,3 +1,5 @@
+using API_Alimento_Teste.DA;
+using API_Alimento_Teste.Lib.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -9,6 +11,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -26,6 +29,9 @@ namespace API_Alimento_Teste
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var db = getDatabase();
+            db.Config();
+            services.AddSingleton(db);
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -54,6 +60,12 @@ namespace API_Alimento_Teste
             {
                 endpoints.MapControllers();
             });
+        }
+        private IDatabase getDatabase()
+        {
+            var filepath = Path.Combine("BancoTeste", "Alimento.db");
+            var db = new Database(filepath);
+            return db;
         }
     }
 }

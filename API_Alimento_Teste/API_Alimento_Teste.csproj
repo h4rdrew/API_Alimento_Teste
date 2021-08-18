@@ -8,4 +8,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\API_Alimento_Teste.DA\API_Alimento_Teste.DA.csproj" />
+    <ProjectReference Include="..\API_Alimento_Teste.Lib\API_Alimento_Teste.Lib.csproj" />
+  </ItemGroup>
+
 </Project>
