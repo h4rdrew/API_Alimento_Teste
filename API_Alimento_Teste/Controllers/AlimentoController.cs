@@ -28,7 +28,7 @@ namespace API_Alimento_Teste.Controllers
 
         [HttpPost]
         [Route("cadastra_alimento")]
-        public IActionResult CadastraAlimento([FromForm]Model_Alimento alimento)
+        public IActionResult CadastraAlimento([FromBody]Model_Alimento alimento)
         {
            var resultado = _db.Alimentos.Cadastro_Alimento(alimento);
             return Ok(resultado);

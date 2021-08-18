@@ -38,6 +38,13 @@ namespace API_Alimento_Teste
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API_Alimento_Teste", Version = "v1" });
             });
+
+            //services.AddCors(o => o.AddPolicy("AllowFull", builder =>
+            //  {
+            //      builder.AllowAnyMethod()
+            //             .AllowAnyHeader()
+            //             .AllowAnyOrigin();
+            //  }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,7 +58,7 @@ namespace API_Alimento_Teste
             }
 
             app.UseHttpsRedirection();
-
+            //app.UseCors();
             app.UseRouting();
 
             app.UseAuthorization();
