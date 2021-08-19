@@ -51,7 +51,7 @@ namespace API_Alimento_Teste
             }
 
             app.UseHttpsRedirection();
-            //app.UseCors();
+            app.UseCors("AllowFull");
             app.UseRouting();
 
             app.UseAuthorization();

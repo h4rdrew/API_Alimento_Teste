@@ -22,15 +22,16 @@ namespace API_Alimento_Teste.Controllers
         [Route("consulta_alimento")]
         public IActionResult Consulta_Alimento(int id)
         {
-            var resultado = _db.Alimentos.ConsultaAlimento(id);
+            var resultado = new Model_Alimento();
+            if (id != 0) resultado = _db.Alimentos.ConsultaAlimento(id);
             return Ok(resultado);
         }
 
         [HttpPost]
         [Route("cadastra_alimento")]
-        public IActionResult CadastraAlimento([FromBody]Model_Alimento alimento)
+        public IActionResult CadastraAlimento([FromBody] Model_Alimento alimento)
         {
-           var resultado = _db.Alimentos.Cadastro_Alimento(alimento);
+            var resultado = _db.Alimentos.Cadastro_Alimento(alimento);
             return Ok(resultado);
         }
 
