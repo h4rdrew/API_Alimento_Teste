@@ -8,17 +8,39 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./alimento-cadastro.component.scss'],
 })
 export class AlimentoCadastroComponent implements OnInit {
-  alimentoModel: AlimentoModel = {};
+  //referente -> cadastroAlimento()
+  cadastroAlimentoModel: AlimentoModel = {};
+
+  //referente -> listarAlimentos()
   listaAlimentos: any[] | undefined;
+
+  //referente -> consultaAlimentoID()
+  alimentoID: number = 0;
+  alimentoIDModel: AlimentoModel = {};
+
+  //referente - > consultaAlimentoNome()
+  alimentoNome: string = ""
+  listaAlimentosNome: any[] | undefined;
+
+  //referente - > atualizaCadastro()
+  atualizaAlimentoModel: AlimentoModel = {};
 
   constructor(private alimentoService: AlimentoService) {}
 
   cadastroAlimento() {
     this.alimentoService
-      .cadastro_Alimento(this.alimentoModel)
+      .cadastro_Alimento(this.cadastroAlimentoModel)
       .subscribe((resultado) => {
         console.log(resultado);
       });
+  }
+
+  atualizaCadastro(){
+    this.alimentoService
+    .atualiza_Alimento(this.atualizaAlimentoModel)
+    .subscribe((resultado) =>{
+      console.log(resultado);
+    });
   }
 
   listarAlimentos() {
@@ -30,21 +52,24 @@ export class AlimentoCadastroComponent implements OnInit {
       });
   }
 
-  /*consultaAlimentoID(id: number) {
+  consultaAlimentoID() {
     this.alimentoService
-      .consulta_Alimento(id)
+      .consulta_Alimento(this.alimentoID)
       .subscribe((alimentoModel: AlimentoModel) => {
         console.table(alimentoModel);
-        this.alimentoModel = alimentoModel;
+        this.alimentoIDModel = alimentoModel;
       });
-  }*/
+  }
+
+  consultaAlimentoNome(){
+    this.alimentoService
+    .consulta_Alimento_Nome(this.alimentoNome)
+    .subscribe((alimentoModel: AlimentoModel[]) => {
+      console.table(alimentoModel);
+      this.listaAlimentosNome = alimentoModel;
+    })
+  }
 
   ngOnInit() {
-    this.alimentoService
-      .consulta_Alimento(2)
-      .subscribe((alimentoModel: AlimentoModel) => {
-        console.table(alimentoModel);
-        this.alimentoModel = alimentoModel;
-      });
   }
 }

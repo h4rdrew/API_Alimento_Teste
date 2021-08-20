@@ -1,8 +1,23 @@
 <p>alimento-cadastro works!</p>
-<form (ngSubmit)="cadastroAlimento()">
-  <input type="text" id="nome" name="nome" [(ngModel)]="alimentoModel.nome" />
-  <button type="submit">Cadastrar</button>
-</form>
+<div>
+  <h1>Cadastrar Alimento</h1>
+  <form (ngSubmit)="cadastroAlimento()">
+    <label>Nome: </label>
+    <input type="text" id="nome" name="nome" [(ngModel)]="cadastroAlimentoModel.nome" />
+    <button type="submit">Cadastrar</button>
+  </form>
+</div>
+
+<div>
+  <h1>Atualizar Alimento</h1>
+  <form (ngSubmit)="atualizaCadastro()">
+    <label>ID: </label>
+    <input type="text" id="id2" name="id2" [(ngModel)]="atualizaAlimentoModel.id" />
+    <label>Nome: </label>
+    <input type="text" id="nome2" name="nome2" [(ngModel)]="atualizaAlimentoModel.nome" />
+    <button type="submit">Atualizar</button>
+  </form>
+</div>
 
 <div class="listaAlimentosAPI">
   <form>
@@ -21,6 +36,58 @@
         </tr>
       </tbody>
     </table>
-    <button (click)="listarAlimentos()">Listar todos os alimentos</button>
+    <button (click)="listarAlimentos()">Consultar</button>
   </form>
 </div>
+
+<div>
+  <div>
+    <h1>Consultar Alimento - ID</h1>
+    <label>ID: </label>
+    <input [(ngModel)]="alimentoID" />
+  </div>
+  <div>
+    <button (click)="consultaAlimentoID()">Consultar</button>
+  </div>
+</div>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{alimentoIDModel.id}}</td>
+      <td>{{alimentoIDModel.nome}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div>
+  <div>
+    <h1>Consultar Alimento - Nome</h1>
+    <label>Nome: </label>
+    <input [(ngModel)]="alimentoNome" />
+  </div>
+  <div>
+    <button (click)="consultaAlimentoNome()">Consultar</button>
+  </div>
+</div>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let alimento of listaAlimentosNome">
+      <td>{{alimento.id}}</td>
+      <td>{{alimento.nome}}</td>
+    </tr>
+  </tbody>
+</table>

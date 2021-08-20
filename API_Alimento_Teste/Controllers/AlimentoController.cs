@@ -37,7 +37,7 @@ namespace API_Alimento_Teste.Controllers
 
         [HttpPost]
         [Route("atualiza_alimento")]
-        public IActionResult AtualizaAlimento([FromForm] Model_Alimento alimento)
+        public IActionResult AtualizaAlimento([FromBody] Model_Alimento alimento)
         {
             var resultado = _db.Alimentos.Atualiza_Alimento(alimento);
             return Ok(resultado);
