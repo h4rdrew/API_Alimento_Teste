@@ -1,93 +1,126 @@
 <p>alimento-cadastro works!</p>
-<div>
-  <h1>Cadastrar Alimento</h1>
-  <form (ngSubmit)="cadastroAlimento()">
-    <label>Nome: </label>
-    <input type="text" id="nome" name="nome" [(ngModel)]="cadastroAlimentoModel.nome" />
-    <button type="submit">Cadastrar</button>
-  </form>
-</div>
 
-<div>
-  <h1>Atualizar Alimento</h1>
-  <form (ngSubmit)="atualizaCadastro()">
-    <label>ID: </label>
-    <input type="text" id="id2" name="id2" [(ngModel)]="atualizaAlimentoModel.id" />
-    <label>Nome: </label>
-    <input type="text" id="nome2" name="nome2" [(ngModel)]="atualizaAlimentoModel.nome" />
-    <button type="submit">Atualizar</button>
-  </form>
-</div>
-
-<div class="listaAlimentosAPI">
-  <form>
-    <h1>Lista de Alimentos</h1>
-    <table>
-      <thead>
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">NOME</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let alimento of listaAlimentos">
-          <td>{{ alimento.id }}</td>
-          <td>{{ alimento.nome }}</td>
-        </tr>
-      </tbody>
-    </table>
-    <button (click)="listarAlimentos()">Consultar</button>
-  </form>
-</div>
-
-<div>
-  <div>
-    <h1>Consultar Alimento - ID</h1>
-    <label>ID: </label>
-    <input [(ngModel)]="alimentoID" />
-  </div>
-  <div>
-    <button (click)="consultaAlimentoID()">Consultar</button>
-  </div>
-</div>
-
-<table class='table'>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>{{alimentoIDModel.id}}</td>
-      <td>{{alimentoIDModel.nome}}</td>
-    </tr>
-  </tbody>
-</table>
-
-<div>
-  <div>
-    <h1>Consultar Alimento - Nome</h1>
-    <label>Nome: </label>
-    <input [(ngModel)]="alimentoNome" />
-  </div>
-  <div>
-    <button (click)="consultaAlimentoNome()">Consultar</button>
-  </div>
-</div>
-
-<table class='table'>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let alimento of listaAlimentosNome">
-      <td>{{alimento.id}}</td>
-      <td>{{alimento.nome}}</td>
-    </tr>
-  </tbody>
-</table>
+<mat-tab-group>
+  <mat-tab label="Cadastrar Alimento">
+    <form class="example-form" (ngSubmit)="cadastroAlimento()">
+      <div>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Cadastrar Alimento</mat-label>
+          <input
+            matInput
+            placeholder="Ex: Banana"
+            type="text"
+            id="nome"
+            name="nome"
+            [(ngModel)]="cadastroAlimentoModel.nome"
+          />
+        </mat-form-field>
+        <button mat-raised-button type="submit">Cadastrar</button>
+      </div>
+    </form>
+  </mat-tab>
+  <mat-tab label="Atualizar Cadastro">
+    <form class="example-form" (ngSubmit)="atualizaCadastro()">
+      <div>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>ID</mat-label>
+          <input
+            matInput
+            placeholder="Ex: 3"
+            type="text"
+            id="idAtuliza"
+            name="idAtuliza"
+            [(ngModel)]="atualizaAlimentoModel.id"
+          />
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Nome</mat-label>
+          <input
+            matInput
+            placeholder="Ex: Banana"
+            type="text"
+            id="nome2"
+            name="nome2"
+            [(ngModel)]="atualizaAlimentoModel.nome"
+          />
+        </mat-form-field>
+        <button mat-raised-button type="submit">Atualizar</button>
+      </div>
+    </form>
+  </mat-tab>
+  <mat-tab label="Listar Alimentos">
+    <div class="listaAlimentosAPI">
+      <form>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">NOME</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let alimento of listaAlimentos">
+              <td>{{ alimento.id }}</td>
+              <td>{{ alimento.nome }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <button mat-raised-button (click)="listarAlimentos()">Consultar</button>
+      </form>
+    </div>
+  </mat-tab>
+  <mat-tab label="Consultar Alimento">
+    <div>
+      <div>
+        <h1>POR ID</h1>
+        <label>ID: </label>
+        <input [(ngModel)]="alimentoID" />
+      </div>
+      <div>
+        <button mat-raised-button (click)="consultaAlimentoID()">
+          Consultar
+        </button>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ alimentoIDModel.id }}</td>
+            <td>{{ alimentoIDModel.nome }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div>
+        <h1>POR Nome</h1>
+        <label>Nome: </label>
+        <input [(ngModel)]="alimentoNome" />
+      </div>
+      <div>
+        <button mat-raised-button (click)="consultaAlimentoNome()">
+          Consultar
+        </button>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let alimento of listaAlimentosNome">
+            <td>{{ alimento.id }}</td>
+            <td>{{ alimento.nome }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-tab>
+</mat-tab-group>
