@@ -1,31 +1,48 @@
 import { AlimentoModel } from './../../../services/models/alimento-model';
 import { AlimentoService } from './../../../services/alimento.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-alimento-cadastro',
   templateUrl: './alimento-cadastro.component.html',
   styleUrls: ['./alimento-cadastro.component.scss'],
 })
-export class AlimentoCadastroComponent implements OnInit {
+export class AlimentoCadastroComponent implements OnInit, AfterViewInit {
+
+  constructor(private alimentoService: AlimentoService) {
+
+  }
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.newListaAlimentos.paginator = this.paginator;
+  }
+
+  clickedRows = new Set<AlimentoModel>();
   //referente -> cadastroAlimento()
   cadastroAlimentoModel: AlimentoModel = {};
 
   //referente -> listarAlimentos()
-  listaAlimentos: any[] | undefined;
+  newListaAlimentos = new MatTableDataSource();
+  listaAlimentos: any[] = [];
+  displayedColumns: string[] = ['id', 'nome', 'actions'];
 
   //referente -> consultaAlimentoID()
   alimentoID: number = 0;
   alimentoIDModel: AlimentoModel = {};
 
   //referente - > consultaAlimentoNome()
-  alimentoNome: string = ""
+  alimentoNome: string = '';
   listaAlimentosNome: any[] | undefined;
 
   //referente - > atualizaCadastro()
   atualizaAlimentoModel: AlimentoModel = {};
 
-  constructor(private alimentoService: AlimentoService) {}
+  ngOnInit() {}
 
   cadastroAlimento() {
     this.alimentoService
@@ -35,12 +52,12 @@ export class AlimentoCadastroComponent implements OnInit {
       });
   }
 
-  atualizaCadastro(){
+  atualizaCadastro() {
     this.alimentoService
-    .atualiza_Alimento(this.atualizaAlimentoModel)
-    .subscribe((resultado) =>{
-      console.log(resultado);
-    });
+      .atualiza_Alimento(this.atualizaAlimentoModel)
+      .subscribe((resultado) => {
+        console.log(resultado);
+      });
   }
 
   listarAlimentos() {
@@ -61,15 +78,12 @@ export class AlimentoCadastroComponent implements OnInit {
       });
   }
 
-  consultaAlimentoNome(){
+  consultaAlimentoNome() {
     this.alimentoService
-    .consulta_Alimento_Nome(this.alimentoNome)
-    .subscribe((alimentoModel: AlimentoModel[]) => {
-      console.table(alimentoModel);
-      this.listaAlimentosNome = alimentoModel;
-    })
-  }
-
-  ngOnInit() {
+      .consulta_Alimento_Nome(this.alimentoNome)
+      .subscribe((alimentoModel: AlimentoModel[]) => {
+        console.table(alimentoModel);
+        this.listaAlimentosNome = alimentoModel;
+      });
   }
 }

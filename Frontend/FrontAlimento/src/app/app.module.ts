@@ -1,5 +1,5 @@
 import { AlimentoCadastroComponent } from './alimentos/cadastro/alimento-cadastro/alimento-cadastro.component';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +11,9 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {MatIconModule} from '@angular/material/icon';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +31,9 @@ import {MatTableModule} from '@angular/material/table';
     MatInputModule,
     MatTabsModule,
     MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

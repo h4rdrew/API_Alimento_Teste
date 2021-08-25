@@ -1,5 +1,6 @@
 <p>alimento-cadastro works!</p>
 
+<!-- API CADASTRAR ALIMENTO -->
 <mat-tab-group>
   <mat-tab label="Cadastrar Alimento">
     <form class="example-form" (ngSubmit)="cadastroAlimento()">
@@ -19,6 +20,8 @@
       </div>
     </form>
   </mat-tab>
+
+  <!-- API ATUALIZAR CADASTRO -->
   <mat-tab label="Atualizar Cadastro">
     <form class="example-form" (ngSubmit)="atualizaCadastro()">
       <div>
@@ -48,27 +51,79 @@
       </div>
     </form>
   </mat-tab>
+
+  <!-- API LISTAR ALIMENTOS -->
   <mat-tab label="Listar Alimentos">
-    <div class="listaAlimentosAPI">
-      <form>
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">NOME</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let alimento of listaAlimentos">
-              <td>{{ alimento.id }}</td>
-              <td>{{ alimento.nome }}</td>
-            </tr>
-          </tbody>
-        </table>
-        <button mat-raised-button (click)="listarAlimentos()">Consultar</button>
-      </form>
+    <button mat-raised-button (click)="listarAlimentos()">Consultar</button>
+    <div class="search-div">
+      <button mat-raised-button>
+        <mat-icon>add</mat-icon>
+        Create
+      </button>
+      <mat-form-field class="search-form-field">
+        <input matInput (ngSubmit)="consultaAlimentoNome()" placeholder="Search" autocomplete="off">
+        <button mat-button matSuffix mat-icon-button aria-label="Clear">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
     </div>
+    <div class="mat-elevation-z8 data-table">
+      <table mat-table [dataSource]="listaAlimentos" matSort>
+        <!-- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- ID Coluna -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+          <td mat-cell *matCellDef="let alimento">{{ alimento.id }}</td>
+        </ng-container>
+
+        <!-- Nome Coluna -->
+        <ng-container matColumnDef="nome">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Nome</th>
+          <td mat-cell *matCellDef="let alimento">{{ alimento.nome }}</td>
+        </ng-container>
+
+        <!-- Actions Coluna -->
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <button mat-icon-button><mat-icon>launch</mat-icon></button>
+            <button mat-icon-button color="warn"><mat-icon>delete_outline</mat-icon></button>
+          </mat-cell>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr
+          mat-row
+          (click)="clickedRows.add(row)"
+          [class.demo-row-is-clicked]="clickedRows.has(row)"
+          *matRowDef="let row; columns: displayedColumns"
+        ></tr>
+      </table>
+
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons
+        aria-label="Select page of periodic elements"
+      >
+      </mat-paginator>
+    </div>
+
+    <div>
+      <h3>Click Log</h3>
+    </div>
+
+    <div *ngIf="!clickedRows.size">Clicked rows will be logged here</div>
+
+    <ul>
+      <li *ngFor="let clickedRow of clickedRows">
+        Clicked on {{ clickedRow.nome }}
+      </li>
+    </ul>
   </mat-tab>
+
+  <!-- API CONSULTAR ALIMENTO -->
   <mat-tab label="Consultar Alimento">
     <div>
       <div>
