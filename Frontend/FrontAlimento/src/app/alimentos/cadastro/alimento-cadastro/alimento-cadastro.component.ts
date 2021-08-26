@@ -16,10 +16,10 @@ export class AlimentoCadastroComponent implements OnInit, AfterViewInit {
 
   }
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  //@ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngAfterViewInit() {
-    this.newListaAlimentos.paginator = this.paginator;
+    //this.newListaAlimentos.paginator = this.paginator;
   }
 
   clickedRows = new Set<AlimentoModel>();
